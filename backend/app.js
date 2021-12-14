@@ -31,13 +31,13 @@ const Guest = require('./modules/guestModel.js');
 app.use(cors());
 app.use(express.json());
 
-// returns all users
+// returns all guests
 app.get('/api/guests', (req, res) => {
     Guest.find({}).then((result) => res.json(result));
   });
 
 // - POST
-// adds new user to users collection
+// adds new guest
 app.post('/api/guests', (req, res) => {
     let newGuest = req.body;
   
@@ -52,7 +52,7 @@ app.post('/api/guests', (req, res) => {
   });
   
   // - PUT
-  // updates user
+  // updates guest
   app.put('/api/guests/:id', (req, res) => {
     const guestId = req.params.id;
     const editedGuest = req.body;
@@ -63,7 +63,7 @@ app.post('/api/guests', (req, res) => {
       );
   });
   // - DELETE
-  //  deletes user
+  //  deletes guest
   app.delete('/api/guests/:id', (req, res) => {
     const guestId = req.params.id;
     Guest.findByIdAndDelete(guestId)
